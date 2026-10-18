@@ -20,6 +20,12 @@ A compliance or customer-experience team needs to determine where complaint volu
 6. How did response timeliness and reported resolution outcomes vary?
 7. Did complaints carrying CFPB consumer tags show different product or outcome patterns?
 
+## Tools and Techniques
+
+- **Python:** API requests, recursive date-range splitting, CSV validation, chunked exports, and Tableau data preparation
+- **MySQL:** schema creation, bulk imports, data cleaning, common table expressions, window functions, ranking, conditional aggregation, and sensitivity analysis
+- **Tableau:** interactive filters, KPI cards, stacked bars, line charts, a filled map, a heatmap, and response-outcome visualizations
+
 ## Workflow
 
 1. Retrieved filtered complaint data from the CFPB API and validated downloaded row counts.
