@@ -20,12 +20,6 @@ A compliance or customer-experience team needs to determine where complaint volu
 6. How did response timeliness and reported resolution outcomes vary?
 7. Did complaints carrying CFPB consumer tags show different product or outcome patterns?
 
-## Tools and Techniques
-
-- **Python:** API requests, recursive date-range splitting, CSV validation, chunked exports, and Tableau data preparation
-- **MySQL:** schema creation, bulk imports, data cleaning, common table expressions, window functions, ranking, conditional aggregation, and sensitivity analysis
-- **Tableau:** interactive filters, KPI cards, stacked bars, line charts, a filled map, a heatmap, and response-outcome visualizations
-
 ## Workflow
 
 1. Retrieved filtered complaint data from the CFPB API and validated downloaded row counts.
@@ -39,6 +33,10 @@ A compliance or customer-experience team needs to determine where complaint volu
 ## Interactive Dashboard
 
 [View the Tableau Public dashboard](https://public.tableau.com/app/profile/cristina.mcm/viz/07_Tableau_Dashboard/ComplaintOverview)
+
+<img width="1472" height="1073" alt="image" src="https://github.com/user-attachments/assets/7769a0b4-d4e2-427f-a83f-081688482dba" />
+
+<img width="1467" height="1064" alt="image" src="https://github.com/user-attachments/assets/f6c14c50-b103-47fb-bec7-e9272030be65" />
 
 The published workbook contains two dashboards:
 
@@ -56,23 +54,19 @@ The published workbook contains two dashboards:
 - Timely-response percentages generally remained near 98–99%, while reported relief outcomes varied considerably more across products and companies.
 - CFPB consumer-tag patterns differed by product, but tag coverage is incomplete and should not be interpreted as comprehensive demographic information.
 
-## Data Considerations
+## Conclusion
 
-- Complaint totals measure records published by the CFPB; they do not directly measure company quality, customer satisfaction, market share, or individual consumer risk.
-- Geographic results use raw complaint volume rather than population-adjusted complaint rates.
-- A missing consumer tag means that no tag was recorded, not that the consumer did not belong to the corresponding group.
-- The January 2025 anomaly remains in the primary analysis because the complaints are unique published records. A separate sensitivity analysis evaluates its influence on growth.
-- The source and cleaned CSV files are excluded from this repository because of their size. The extraction notebook documents how the source files were obtained.
+Consumer complaint volume increased substantially from 2021 through 2025, with the greatest areas of concern involving cards, checking and savings accounts, and rapidly growing digital-payment complaints. Compliance and customer-experience teams should prioritize high-volume companies and recurring issues while evaluating resolution outcomes, not response timeliness alone, because most companies responded on time but differed considerably in the type of resolution provided.
 
 ## Repository Contents
 
-- `01_CFPB_API_Data_Extraction.ipynb` – retrieves annual product data through the CFPB API, splits large requests, and validates downloaded row counts.
-- `02_Database_Setup_and_Import.sql` – creates the MySQL schema and raw staging table and imports the extracted CSV files.
-- `03_Data_Cleaning.sql` – validates, standardizes, deduplicates, and transforms the raw complaint records.
-- `04_Exploratory_Data_Analysis.sql` – answers the primary business questions using MySQL.
-- `04A_January_2025_Anomaly_Investigation.sql` – investigates the January spike and performs an adjusted-growth sensitivity analysis.
-- `05_Export_Clean_Data.ipynb` – exports the cleaned MySQL table to CSV in memory-efficient chunks.
-- `06_Tableau_Data_Preparation.ipynb` – selects and validates the complaint-level fields used in Tableau.
+- [01_CFPB_API_Data_Extraction.ipynb](01_CFPB_API_Data_Extraction.ipynb) – extracts annual consumer complaint records from the CFPB API and saves the raw files for database import.
+- [02_Database_Setup_and_Import.sql](02_Database_Setup_and_Import.sql) – creates the MySQL schema and raw staging table and imports the extracted CSV files.
+- [03_Data_Cleaning.sql](03_Data_Cleaning.sql) – validates, standardizes, deduplicates, and transforms the raw complaint records.
+- [04_Exploratory_Data_Analysis.sql](04_Exploratory_Data_Analysis.sql) – answers the primary business questions using MySQL.
+- [04A_January_2025_Anomaly_Investigation.sql](04A_January_2025_Anomaly_Investigation.sql) – investigates the January spike and performs an adjusted-growth sensitivity analysis.
+- [05_Export_Clean_Data.ipynb](05_Export_Clean_Data.ipynb) – exports the cleaned MySQL table to CSV in memory-efficient chunks.
+- [06_Tableau_Data_Preparation.ipynb](06_Tableau_Data_Preparation.ipynb) – prepares the final datasets used to build the Tableau dashboards..
 
 ## Data Source
 
